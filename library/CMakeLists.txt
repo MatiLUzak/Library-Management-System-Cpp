@@ -13,7 +13,8 @@ target_include_directories(Library PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_CURRENT_SOURCE_DIR}/include/model
         ${CMAKE_CURRENT_SOURCE_DIR}/include/repositories
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/menagers)
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/menagers
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/exceptions)
 
 
 #Unit Tests section
