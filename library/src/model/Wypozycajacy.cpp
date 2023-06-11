@@ -3,12 +3,14 @@
 //
 #include "Wypozycajacy.h"
 #include "sstream"
+#include "Exception.h"
 Wypozycajacy::Wypozycajacy(const Typ_Wypozycajacy_Ptr &typWypozycajacy, const std::string &nazwa, const PTime &dataUr,
                            const std::string &adres) : Typ_Wypozycajacy(typWypozycajacy), nazwa(nazwa), data_ur(dataUr),
                                                        adres(adres)
                                                        {
                                                            UUID = boost::uuids::random_generator()();
-
+                                                           if(typWypozycajacy== nullptr){ throw ParameterException ("Blendny typWypozycajacy");}
+                                                           if(nazwa.empty()){ throw ParameterException ("Blendny nazwa");}
                                                        }
 
 const boost::uuids::uuid &Wypozycajacy::getUuid() const {
