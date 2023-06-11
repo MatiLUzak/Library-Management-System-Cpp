@@ -8,6 +8,7 @@ Wypozycajacy::Wypozycajacy(const Typ_Wypozycajacy_Ptr &typWypozycajacy, const st
                                                        adres(adres)
                                                        {
                                                            UUID = boost::uuids::random_generator()();
+
                                                        }
 
 const boost::uuids::uuid &Wypozycajacy::getUuid() const {
