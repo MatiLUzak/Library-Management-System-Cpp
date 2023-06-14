@@ -8,6 +8,7 @@
 #include "memory"
 #include "iostream"
 #include <algorithm>
+#include "RepozytoriumException.h"
 template<class Model>
 class Repozytorium {
 protected:
@@ -16,12 +17,18 @@ protected:
 public:
 
     void dodaj(std::shared_ptr<Model> model) {
-        if (model == nullptr) return;
+        if (model == nullptr) {
+            throw RepozytoriumException("Nie mozna dodac repozytorium");
+            return;
+        }
         registry.push_back(model);
     }
 
     void usun(std::shared_ptr<Model> model) {
-        if (model == nullptr) return;
+        if (model == nullptr) {
+            throw RepozytoriumException("Nie mozna usunac repozytorium");
+            return;
+        }
         registry.erase(std::remove_if(registry.begin(), registry.end(),
                                       [model](const std::shared_ptr<Model>& m) { return m == model; }), registry.end());
     }
