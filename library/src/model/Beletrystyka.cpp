@@ -9,7 +9,14 @@ Beletrystyka::Beletrystyka(const std::string &wydawnictwo,
                            const std::string &przedziałWiekowy,
                            const std::string &rodzaj) : Ksiazka(wydawnictwo, jezyk, tytul, autor),
                                                                              przedział_wiekowy(przedziałWiekowy),
-                                                                             rodzaj(rodzaj) {}
+                                                                             rodzaj(rodzaj) {
+    if(przedziałWiekowy.empty()) {
+        throw WoluminException("Przedzial wiekowy nie moze byc pusty");
+    }
+    if(rodzaj.empty()) {
+        throw WoluminException("Rodzaj nie moze byc pusty");
+    }
+}
 
 const std::string &Beletrystyka::getPrzedziałWiekowy() const {
     return przedział_wiekowy;
@@ -20,10 +27,16 @@ const std::string &Beletrystyka::getRodzaj() const {
 }
 
 void Beletrystyka::setPrzedziałWiekowy(const std::string &przedziałWiekowy) {
+    if(przedziałWiekowy.empty()) {
+        throw WoluminException("Przedzial wiekowy nie moze byc pusty");
+    }
     przedział_wiekowy = przedziałWiekowy;
 }
 
 void Beletrystyka::setRodzaj(const std::string &rodzaj) {
+    if(rodzaj.empty()) {
+        throw WoluminException("Rodzaj nie moze byc pusty");
+    }
     Beletrystyka::rodzaj = rodzaj;
 }
 
