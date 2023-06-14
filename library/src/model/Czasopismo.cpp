@@ -5,13 +5,21 @@
 #include "sstream"
 
 Czasopismo::Czasopismo(const std::string &wydawnictwo, const std::string &jezyk, const std::string &tytul,
-                       const std::string &nrWydania) : Wolumin(wydawnictwo, jezyk, tytul), nr_wydania(nrWydania) {}
+                       const std::string &nrWydania) : Wolumin(wydawnictwo, jezyk, tytul), nr_wydania(nrWydania) {
+    if(nrWydania.empty()){
+        throw WoluminException("Brak numeru wydania");
+    }
+
+}
 
 const std::string &Czasopismo::getNrWydania() const {
     return nr_wydania;
 }
 
 void Czasopismo::setNrWydania(const std::string &nrWydania) {
+    if(nrWydania.empty()){
+        throw WoluminException("Brak numeru wydania");
+    }
     nr_wydania = nrWydania;
 }
 

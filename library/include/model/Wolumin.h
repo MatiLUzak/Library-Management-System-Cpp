@@ -4,6 +4,7 @@
 #ifndef OOPPROJECT_WOLUMIN_H
 #define OOPPROJECT_WOLUMIN_H
 #include "iostream"
+#include "WoluminException.h"
 class Wolumin
         {
 protected:

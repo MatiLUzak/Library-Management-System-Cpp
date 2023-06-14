@@ -3,7 +3,6 @@
 //
 #include "Wolumin.h"
 #include "sstream"
-#include "WoluminException.h"
 Wolumin::Wolumin(const std::string &wydawnictwo, const std::string &jezyk, const std::string &tytul) : wydawnictwo(
         wydawnictwo), jezyk(jezyk), tytul(tytul) {
     if(wydawnictwo.empty()){
