@@ -7,13 +7,20 @@
 Nauczyciel::Nauczyciel(double kara, int maxDlWypoz, int maksLKsiazek, const std::string &tytul) : Typ_Wypozycajacy(kara,
                                                                                                                    maxDlWypoz,
                                                                                                                    maksLKsiazek),
-                                                                                                  tytul(tytul) {}
+                                                                                                  tytul(tytul) {
+    if(tytul.empty()) {
+        throw WypozyczajacyException("Bladny tytul");
+    }
+}
 
 const std::string &Nauczyciel::getTytul() const {
     return tytul;
 }
 
 void Nauczyciel::setTytul(const std::string &tytul) {
+    if(tytul.empty()) {
+        throw WypozyczajacyException("Bladny tytul");
+    }
     Nauczyciel::tytul = tytul;
 }
 

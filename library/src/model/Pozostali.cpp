@@ -5,7 +5,11 @@
 // Created by student on 06.06.23.
 //
 Pozostali::Pozostali(double kara, int maxDlWypoz, int maksLKsiazek, const std::string &zawod)
-        : Typ_Wypozycajacy(kara, maxDlWypoz, maksLKsiazek), zawod(zawod) {}
+        : Typ_Wypozycajacy(kara, maxDlWypoz, maksLKsiazek), zawod(zawod) {
+    if(zawod.empty()) {
+        throw WypozyczajacyException("Bladny zawod");
+    }
+}
 
 
 const std::string &Pozostali::getZawod() const {
@@ -13,6 +17,9 @@ const std::string &Pozostali::getZawod() const {
 }
 
 void Pozostali::setZawod(const std::string &zawod) {
+    if(zawod.empty()) {
+        throw WypozyczajacyException("Bladny zawod");
+    }
     Pozostali::zawod = zawod;
 }
 std::string Pozostali::Typ_Info() {
