@@ -3,11 +3,18 @@
 //
 #include "Wolumin.h"
 #include "sstream"
+#include "WoluminException.h"
 Wolumin::Wolumin(const std::string &wydawnictwo, const std::string &jezyk, const std::string &tytul) : wydawnictwo(
         wydawnictwo), jezyk(jezyk), tytul(tytul) {
-    /*if(wydawnictwo.empty()){ throw ParameterException ("Blendne wydawnictwo");}
-    if(jezyk.empty()){ throw ParameterException ("Blendny jezyk");}
-    if(tytul.empty()){ throw ParameterException ("Blendny tytul");}*/
+    if(wydawnictwo.empty()){
+        throw WoluminException("Błędne wydawnictwo");
+    }
+    if(jezyk.empty()){
+        throw WoluminException("Błędny język");
+    }
+    if(tytul.empty()){
+        throw WoluminException("Błędny tytuł");
+    }
 }
 
 const std::string &Wolumin::getWydawnictwo() const {
@@ -23,13 +30,22 @@ const std::string &Wolumin::getTytul() const {
 }
 
 void Wolumin::setWydawnictwo(const std::string &wydawnictwo) {
+    if(wydawnictwo.empty()){
+        throw WoluminException("Błędne wydawnictwo");
+    }
     Wolumin::wydawnictwo = wydawnictwo;
 }
 
 void Wolumin::setJezyk(const std::string &jezyk) {
+    if(jezyk.empty()){
+        throw WoluminException("Błędny język");
+    }
     Wolumin::jezyk = jezyk;
 }
 
 void Wolumin::setTytul(const std::string &tytul) {
+    if(tytul.empty()){
+        throw WoluminException("Błędny tytuł");
+    }
     Wolumin::tytul = tytul;
 }

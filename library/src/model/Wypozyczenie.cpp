@@ -9,8 +9,6 @@ Wypozyczenie::Wypozyczenie(const Wypozycajacy_Ptr &wypozycajacy, const Wolumin_P
         {
             data_od = boost::posix_time::second_clock::local_time();
             UUID = boost::uuids::random_generator()();
-            if(wypozycajacy== nullptr){ throw ParameterException ("Blendny wypozycajacy");}
-            if(wolumin== nullptr){ throw ParameterException ("Blendny wolumin");}
         }
 
 const Wypozycajacy_Ptr &Wypozyczenie::getWypozycajacy() const {
