@@ -13,6 +13,7 @@
 #include <boost/date_time/local_time/local_time.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/uuid/random_generator.hpp>
+#include "WypozyczajacyException.h"
 typedef boost::posix_time::ptime PTime;
 typedef std::shared_ptr<Typ_Wypozycajacy> Typ_Wypozycajacy_Ptr;
 class Wypozycajacy

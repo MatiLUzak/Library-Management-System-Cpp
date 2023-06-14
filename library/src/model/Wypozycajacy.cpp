@@ -8,8 +8,15 @@ Wypozycajacy::Wypozycajacy(const Typ_Wypozycajacy_Ptr &typWypozycajacy, const st
                                                        adres(adres)
                                                        {
                                                            UUID = boost::uuids::random_generator()();
-                                                           /*if(typWypozycajacy== nullptr){ throw ParameterException ("Blendny typWypozycajacy");}
-                                                           if(nazwa.empty()){ throw ParameterException ("Blendny nazwa");}*/
+                                                           if(typWypozycajacy== nullptr) {
+                                                               throw WypozyczajacyException("Bladny typWypozycajacy");
+                                                           }
+                                                           if(nazwa.empty()) {
+                                                               throw WypozyczajacyException("Bladna nazwa");
+                                                           }
+                                                           if(adres.empty()) {
+                                                               throw WypozyczajacyException("Bladny adres");
+                                                           }
                                                        }
 
 const boost::uuids::uuid &Wypozycajacy::getUuid() const {
@@ -33,10 +40,16 @@ const std::string &Wypozycajacy::getAdres() const {
 }
 
 void Wypozycajacy::setTypWypozycajacy(const Typ_Wypozycajacy_Ptr &typWypozycajacy) {
+    if(typWypozycajacy== nullptr) {
+        throw WypozyczajacyException("Bladny typWypozycajacy");
+    }
     Typ_Wypozycajacy = typWypozycajacy;
 }
 
 void Wypozycajacy::setNazwa(const std::string &nazwa) {
+    if(nazwa.empty()) {
+        throw WypozyczajacyException("Bladna nazwa");
+    }
     Wypozycajacy::nazwa = nazwa;
 }
 
@@ -45,8 +58,12 @@ void Wypozycajacy::setDataUr(const PTime &dataUr) {
 }
 
 void Wypozycajacy::setAdres(const std::string &adres) {
+    if(adres.empty()) {
+        throw WypozyczajacyException("Bladny adres");
+    }
     Wypozycajacy::adres = adres;
 }
+
 
 const std::string Wypozycajacy::pobierz_inforacje_wyp() {
     std::stringstream info;

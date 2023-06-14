@@ -1,6 +1,7 @@
 #ifndef BIBLIOTEKA_MATEUSZLUZAK_MACIEJ_KOWALSKI_TYP_WYPOZYCAJACY_H
 #define BIBLIOTEKA_MATEUSZLUZAK_MACIEJ_KOWALSKI_TYP_WYPOZYCAJACY_H
 #include "iostream"
+#include "WypozyczajacyException.h"
 class Typ_Wypozycajacy
 {
 protected:
