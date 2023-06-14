@@ -9,6 +9,12 @@ Wypozyczenie::Wypozyczenie(const Wypozycajacy_Ptr &wypozycajacy, const Wolumin_P
         {
             data_od = boost::posix_time::second_clock::local_time();
             UUID = boost::uuids::random_generator()();
+            if(wypozycajacy == nullptr) {
+                throw WypozyczenieException("Bladny wypozycajacy");
+            }
+            if(wolumin == nullptr) {
+                throw WypozyczenieException("Bladny wolumin");
+            }
         }
 
 const Wypozycajacy_Ptr &Wypozyczenie::getWypozycajacy() const {
@@ -28,10 +34,16 @@ const PTime &Wypozyczenie::getDataDo() const {
 }
 
 void Wypozyczenie::setWypozycajacy(const Wypozycajacy_Ptr &wypozycajacy) {
+    if(wypozycajacy == nullptr) {
+        throw WypozyczenieException("Bladny wypozycajacy");
+    }
     Wypozycajacy = wypozycajacy;
 }
 
 void Wypozyczenie::setWolumin(const Wolumin_Ptr &wolumin) {
+    if(wolumin == nullptr) {
+        throw WypozyczenieException("Bladny wolumin");
+    }
     Wolumin = wolumin;
 }
 

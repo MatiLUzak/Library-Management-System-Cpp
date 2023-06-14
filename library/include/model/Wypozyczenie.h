@@ -12,6 +12,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/uuid/string_generator.hpp>
+#include "WypozyczenieException.h"
 typedef boost::posix_time::ptime PTime;
 typedef std::shared_ptr<Wypozycajacy> Wypozycajacy_Ptr;
 typedef std::shared_ptr<Wolumin> Wolumin_Ptr;
