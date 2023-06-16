@@ -28,6 +28,25 @@ BOOST_AUTO_TEST_SUITE(WoluminSuiteCorrect)
         BOOST_CHECK_EQUAL(n1.getDział(), "Dział2");
         BOOST_CHECK(n1.getAutor() == newAutors);
     }
+    BOOST_AUTO_TEST_CASE(NaukowaExceptionCase) {
+        std::vector<std::string> autors = {"Autor1", "Autor2"};
+        std::vector<std::string> emptyAutors;
+        BOOST_CHECK_THROW(Naukowa("", "Polski", "Tytuł1", autors, "Recenzja1", "Dział1"), WoluminException);
+        BOOST_CHECK_THROW(Naukowa("Wydawnictwo1", "", "Tytuł1", autors, "Recenzja1", "Dział1"), WoluminException);
+        BOOST_CHECK_THROW(Naukowa("Wydawnictwo1", "Polski", "", autors, "Recenzja1", "Dział1"),WoluminException);
+        BOOST_CHECK_THROW(Naukowa("Wydawnictwo1", "Polski", "Tytuł1", autors, "", "Dział1"),WoluminException);
+        BOOST_CHECK_THROW(Naukowa("Wydawnictwo1", "Polski", "Tytuł1", autors, "Recenzja1", ""),WoluminException);
+        BOOST_CHECK_THROW(Naukowa("Wydawnictwo1", "Polski", "Tytuł1", emptyAutors, "Recenzja1", "Dział1"),WoluminException);
+
+        Naukowa n1("Wydawnictwo1", "Polski", "Tytuł1", autors, "Recenzja1", "Dział1");
+
+        BOOST_CHECK_THROW(n1.setWydawnictwo(""), WoluminException);
+        BOOST_CHECK_THROW(n1.setJezyk(""), WoluminException);
+        BOOST_CHECK_THROW(n1.setTytul(""), WoluminException);
+        BOOST_CHECK_THROW(n1.setRecenzja(""), WoluminException);
+        BOOST_CHECK_THROW(n1.setDział(""), WoluminException);
+        BOOST_CHECK_THROW(n1.setAutor(emptyAutors), WoluminException);
+    }
     BOOST_AUTO_TEST_CASE(CzasopismoCase) {
         Czasopismo c1("Wydawnictwo1", "Polski", "Tytuł1", "Nr1");
         c1.setWydawnictwo("Wydawnictwo2");
