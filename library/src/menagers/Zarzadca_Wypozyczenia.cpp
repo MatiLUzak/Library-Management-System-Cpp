@@ -15,7 +15,7 @@ void Zarzadca_Wypozyczenia::usunWypozyczenie(WypozyczeniePtr wypozyczenie) {
 
 }
 
-int Zarzadca_Wypozyczenia::obliczKare(WypozyczeniePtr wypozyczenie) {
+double Zarzadca_Wypozyczenia::obliczKare(WypozyczeniePtr wypozyczenie) {
     auto historyczne_wypozyczenia = repozytorium.getHistoryczneWypoz();
 
     for (auto& hist_wypozyczenie : historyczne_wypozyczenia) {

@@ -56,8 +56,8 @@ double Wypozyczenie::dl_wypoz() {
     return roznica.total_seconds() / (60.0*60.0*24.0);
 }
 
-int Wypozyczenie::oblicz_kare() {
-    int kara;
+double Wypozyczenie::oblicz_kare() {
+    double kara;
     kara=(Wypozycajacy->getTypWypozycajacy()->getKara())*dl_wypoz();
     return kara;
 }

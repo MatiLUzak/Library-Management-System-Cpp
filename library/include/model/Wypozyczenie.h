@@ -45,6 +45,6 @@ public:
 
     const boost::uuids::uuid &getUuid() const;
 
-    int oblicz_kare();
+    double oblicz_kare();
 };
 #endif //OOPPROJECT_WYPOZYCZENIE_H

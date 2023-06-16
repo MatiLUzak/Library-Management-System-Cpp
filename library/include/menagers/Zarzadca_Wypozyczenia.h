@@ -19,6 +19,6 @@ public:
     std::vector<WypozyczeniePtr> znajdzWszystkieWypozyczenia() {
         return repozytorium.Znajdz_wsz();
     }
-    int obliczKare(WypozyczeniePtr wypozyczenie);
+    double obliczKare(WypozyczeniePtr wypozyczenie);
         };
 #endif //OOPPROJECT_ZARZADCA_WYPOZYCZENIA_H
