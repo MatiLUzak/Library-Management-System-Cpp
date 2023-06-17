@@ -49,7 +49,7 @@ endif()
 
 set(SOURCE_TEST_FILES
         test/master.cpp
-        test/Typ_Wypozycajacy_test.cpp test/Wolumin_test.cpp test/Wypozycajacy_test.cpp test/Wypozyczenie_test.cpp test/Zazradca_Woluminu_test.cpp test/Zarzadca_Wypozyczajacy_test.cpp test/Zarzadca_Wypozyczenia_test.cpp)
+        test/Typ_Wypozycajacy_test.cpp test/Wolumin_test.cpp test/Wypozycajacy_test.cpp test/Wypozyczenie_test.cpp test/Zazradca_Woluminu_test.cpp test/Zarzadca_Wypozyczajacy_test.cpp test/Zarzadca_Wypozyczenia_test.cpp test/Repozytorium_Woluminu_test.cpp test/Repozytorium_Wypozyczenia_test.cpp test/Repozytorium_Wypozyczajacy_test.cpp)
 
 include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/include
