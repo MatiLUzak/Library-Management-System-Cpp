@@ -33,13 +33,17 @@ public:
     virtual std::string pobierz_informacje()=0;
 
     template<class Archive>
-    void save(Archive & archive) const {
-        archive(wydawnictwo, jezyk, tytul);
+    void save(Archive & archive) const
+    {
+        archive(tytul);
     }
 
     template<class Archive>
-    void load(Archive & archive) {
-        archive(wydawnictwo, jezyk, tytul);
+    void load(Archive & archive)
+    {
+        archive(tytul);
     }
+
+    BOOST_SERIALIZATION_SPLIT_MEMBER()
 };
 #endif //OOPPROJECT_WOLUMIN_H
