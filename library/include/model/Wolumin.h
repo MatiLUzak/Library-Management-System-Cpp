@@ -5,6 +5,9 @@
 #define OOPPROJECT_WOLUMIN_H
 #include "iostream"
 #include "WoluminException.h"
+#include <fstream>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 class Wolumin
         {
 protected:
@@ -28,5 +31,15 @@ public:
     void setTytul(const std::string &tytul);
 
     virtual std::string pobierz_informacje()=0;
+
+    template<class Archive>
+    void save(Archive & archive) const {
+        archive(wydawnictwo, jezyk, tytul);
+    }
+
+    template<class Archive>
+    void load(Archive & archive) {
+        archive(wydawnictwo, jezyk, tytul);
+    }
 };
 #endif //OOPPROJECT_WOLUMIN_H
