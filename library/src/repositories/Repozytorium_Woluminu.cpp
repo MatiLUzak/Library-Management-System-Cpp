@@ -9,3 +9,7 @@ void Repozytorium_Woluminu::dodajDoHistorycznych(WoluminPtr wolumin) {
         historyczny_Wolumin.push_back(wolumin);
     }
 }
+
+const std::vector<WoluminPtr> &Repozytorium_Woluminu::getHistorycznyWolumin() const {
+    return historyczny_Wolumin;
+}

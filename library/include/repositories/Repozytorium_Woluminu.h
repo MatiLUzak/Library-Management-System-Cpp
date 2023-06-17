@@ -14,5 +14,6 @@ private:
         public:
     void dodajDoHistorycznych(WoluminPtr wolumin);
 
+    const std::vector<WoluminPtr> &getHistorycznyWolumin() const;
 };
 #endif //OOPPROJECT_REPOZYTORIUM_WOLUMINU_H
