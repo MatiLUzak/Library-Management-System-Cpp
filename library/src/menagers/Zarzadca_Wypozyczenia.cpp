@@ -8,7 +8,7 @@ repozytorium.dodaj(wypozyczenie);
 }
 
 void Zarzadca_Wypozyczenia::usunWypozyczenie(WypozyczeniePtr wypozyczenie) {
-    if (wypozyczenie == nullptr) return;
+    if (wypozyczenie == nullptr) throw RepozytoriumException("Nullptr exception");
     wypozyczenie->koniec_wypoz();
     repozytorium.dodaj_do_historyczne_wypoz(wypozyczenie);
     repozytorium.usun(wypozyczenie);
