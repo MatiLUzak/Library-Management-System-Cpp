@@ -36,4 +36,10 @@ BOOST_AUTO_TEST_SUITE(ZarzadcaWypozyczajacyTestSuite)
         BOOST_CHECK_EQUAL(found.size(), 1);
         BOOST_CHECK_EQUAL(found[0]->getNazwa(), "Jan Kowalski");
     }
+    BOOST_AUTO_TEST_CASE(ExceptionTest)
+    {
+        Zarzadca_Wypozyczajacy zarzadca;
+        BOOST_CHECK_THROW(zarzadca.dodajWypozyczajacy(nullptr), RepozytoriumException);
+        BOOST_CHECK_THROW(zarzadca.usunWypozyczajacy(nullptr), RepozytoriumException);
+    }
 BOOST_AUTO_TEST_SUITE_END()
