@@ -15,5 +15,7 @@ class Repozytorium_Wypozyczajacy: public Repozytorium<Wypozycajacy>
             Wypozycajacy_Ptr Znajdz_po_ID_wypozyc(const boost::uuids::uuid& id) const;
             void dodaj_do_historyczni(Wypozycajacy_Ptr wypozycajacy);
 
-        };
+    const std::vector<Wypozycajacy_Ptr> &getHistoryczniWypozyczajacy() const;
+
+};
 #endif //OOPPROJECT_REPOZYTORIUM_WYPOZYCZAJACY_H

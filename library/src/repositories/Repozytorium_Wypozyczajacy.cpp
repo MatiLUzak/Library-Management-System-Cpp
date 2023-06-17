@@ -8,8 +8,11 @@ Wypozycajacy_Ptr Repozytorium_Wypozyczajacy::Znajdz_po_ID_wypozyc(const boost::u
 }
 
 void Repozytorium_Wypozyczajacy::dodaj_do_historyczni(Wypozycajacy_Ptr wypozycajacy) {
-    if(wypozycajacy != nullptr) {
         historyczni_wypozyczajacy.push_back(wypozycajacy);
-    }
+
+}
+
+const std::vector<Wypozycajacy_Ptr> &Repozytorium_Wypozyczajacy::getHistoryczniWypozyczajacy() const {
+    return historyczni_wypozyczajacy;
 }
 
