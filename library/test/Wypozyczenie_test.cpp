@@ -18,49 +18,38 @@ BOOST_AUTO_TEST_CASE(WypozyczenieTest)
     auto wolumin = std::make_shared<Beletrystyka>("Helion", "PL", "Harry Potter", autor, "15+", "Fantasy");
 
     Wypozyczenie wypozyczenie(wypozyczajacy, wolumin);
-
-    BOOST_CHECK(wypozyczenie.getWypozycajacy() == wypozyczajacy);
-    BOOST_CHECK(wypozyczenie.getWolumin() == wolumin);
-
+    BOOST_CHECK(wypozyczenie.getDataOd() == boost::posix_time::second_clock::local_time());
     BOOST_CHECK(wypozyczenie.getDataDo().is_not_a_date_time());
 
     wypozyczenie.koniec_wypoz();
     BOOST_CHECK(!wypozyczenie.getDataDo().is_not_a_date_time());
 
+    BOOST_CHECK(!wypozyczenie.getUuid().is_nil());
 
+    auto nowy_wypozyczajacy = std::make_shared<Wypozycajacy>(std::make_shared<Nauczyciel>(0.0, 30, 10, "Prof"), "Adam Nowak", boost::posix_time::time_from_string("2023-05-01 00:00:00"), "Kraków");
+    wypozyczenie.setWypozycajacy(nowy_wypozyczajacy);
+    BOOST_CHECK_EQUAL(wypozyczenie.getWypozycajacy(), nowy_wypozyczajacy);
+
+    auto nowy_wolumin = std::make_shared<Beletrystyka>("Helion", "PL", "Lord of the Rings", autor, "15+", "Fantasy");
+    wypozyczenie.setWolumin(nowy_wolumin);
+    BOOST_CHECK_EQUAL(wypozyczenie.getWolumin(), nowy_wolumin);
+
+    BOOST_CHECK_EQUAL(wypozyczenie.dl_wypoz(), 0);
+    BOOST_CHECK_EQUAL(wypozyczenie.oblicz_kare(), 0);
 }
-    BOOST_AUTO_TEST_CASE(WypozycajacyTest)
+    BOOST_AUTO_TEST_CASE(WypozyczenieExceptionsTest)
     {
-        auto typ = std::make_shared<Nauczyciel>(0.0, 30, 10, "Dr");
-        std::string nazwa = "Jan Kowalski";
-        PTime data_ur = boost::posix_time::time_from_string("2023-05-01 00:00:00");
-        std::string adres = "Warszawa";
-
-        Wypozycajacy wypozycajacy(typ, nazwa, data_ur, adres);
-
-        BOOST_CHECK(wypozycajacy.getTypWypozycajacy() == typ);
-        BOOST_CHECK(wypozycajacy.getNazwa() == nazwa);
-        BOOST_CHECK(wypozycajacy.getDataUr() == data_ur);
-        BOOST_CHECK(wypozycajacy.getAdres() == adres);
-    }
-    BOOST_AUTO_TEST_CASE(BeletrystykaTest)
-    {
-        std::string wydawnictwo = "Helion";
-        std::string jezyk = "PL";
-        std::string tytul = "Harry Potter";
+        auto wypozyczajacy = std::make_shared<Wypozycajacy>(std::make_shared<Nauczyciel>(0.0, 30, 10, "Dr"), "Jan Kowalski", boost::posix_time::time_from_string("2023-05-01 00:00:00"), "Warszawa");
         std::vector<std::string> autor;
         autor.push_back("J.K. Rowling");
-        std::string przedzialWiekowy = "15+";
-        std::string rodzaj = "Fantasy";
+        auto wolumin = std::make_shared<Beletrystyka>("Helion", "PL", "Harry Potter", autor, "15+", "Fantasy");
 
-        Beletrystyka beletrystyka(wydawnictwo, jezyk, tytul, autor, przedzialWiekowy, rodzaj);
+        BOOST_CHECK_THROW(Wypozyczenie wypozyczenie(nullptr, wolumin), WypozyczenieException);
+        BOOST_CHECK_THROW(Wypozyczenie wypozyczenie(wypozyczajacy, nullptr), WypozyczenieException);
 
-        BOOST_CHECK(beletrystyka.getWydawnictwo() == wydawnictwo);
-        BOOST_CHECK(beletrystyka.getJezyk() == jezyk);
-        BOOST_CHECK(beletrystyka.getTytul() == tytul);
-        BOOST_CHECK(beletrystyka.getAutor() == autor);
-        BOOST_CHECK(beletrystyka.getPrzedziałWiekowy() == przedzialWiekowy);
-        BOOST_CHECK(beletrystyka.getRodzaj() == rodzaj);
+        Wypozyczenie wypozyczenie(wypozyczajacy, wolumin);
+        BOOST_CHECK_THROW(wypozyczenie.setWypozycajacy(nullptr), WypozyczenieException);
+        BOOST_CHECK_THROW(wypozyczenie.setWolumin(nullptr), WypozyczenieException);
     }
 
 BOOST_AUTO_TEST_SUITE_END()
