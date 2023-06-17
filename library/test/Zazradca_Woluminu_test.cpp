@@ -3,9 +3,7 @@
 //
 #include <boost/test/unit_test.hpp>
 #include "Zarzadca_Woluminu.h"
-#include <boost/uuid/uuid_generators.hpp> //generatory dla uuid
 #include "Naukowa.h"
-#include "Beletrystyka.h"
 
 BOOST_AUTO_TEST_CASE(DodajUsunWoluminTest)
 {
@@ -17,6 +15,7 @@ BOOST_AUTO_TEST_CASE(DodajUsunWoluminTest)
 
     zarzadca.usunWolumin(n1);
     BOOST_CHECK_EQUAL(zarzadca.znajdzWszystkieWoluminy().size(), 0);
+
 }
 
 BOOST_AUTO_TEST_CASE(ZnajdzWoluminyTest)
@@ -42,4 +41,10 @@ BOOST_AUTO_TEST_CASE(ZnajdzWoluminyTest)
 
     BOOST_REQUIRE_EQUAL(foundVolumes.size(), 1);
     BOOST_CHECK_EQUAL(foundVolumes[0]->getWydawnictwo(), specificPublisher);
+}
+BOOST_AUTO_TEST_CASE(ExceptionTest)
+{
+    Zarzadca_Woluminu zarzadca;
+    BOOST_CHECK_THROW(zarzadca.dodajWolumin(nullptr), RepozytoriumException);
+    BOOST_CHECK_THROW(zarzadca.usunWolumin(nullptr), RepozytoriumException);
 }

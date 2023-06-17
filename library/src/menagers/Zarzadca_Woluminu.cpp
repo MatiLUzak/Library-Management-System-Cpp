@@ -7,7 +7,6 @@ void Zarzadca_Woluminu::dodajWolumin(WoluminPtr wolumin) {
 }
 
 void Zarzadca_Woluminu::usunWolumin(WoluminPtr wolumin) {
-    if (wolumin == nullptr) return;
     repozytorium.dodajDoHistorycznych(wolumin);
     repozytorium.usun(wolumin);
 }
