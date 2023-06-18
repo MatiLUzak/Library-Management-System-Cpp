@@ -4,7 +4,7 @@
 #include "WypozyczajacyException.h"
 class Typ_Wypozycajacy
 {
-protected:
+private:
     double kara;
     int max_dl_wypoz;
     int maks_l_ksiazek;
