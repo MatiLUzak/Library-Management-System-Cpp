@@ -49,7 +49,7 @@ void Typ_Wypozycajacy::setMaksLKsiazek(int maksLKsiazek) {
     }
     maks_l_ksiazek = maksLKsiazek;
 }
-
+//Kod poniżej służył tylko do początkowego sprwadzenia
 /*std::string Typ_Wypozycajacy::Typ_Info() {
     std::stringstream info;
 
