@@ -9,7 +9,7 @@ class Nauczyciel: public Typ_Wypozycajacy
         {
 private:
             std::string tytul;
-        public:
+public:
     Nauczyciel(double kara, int maxDlWypoz, int maksLKsiazek, const std::string &tytul);
 
     const std::string &getTytul() const;
