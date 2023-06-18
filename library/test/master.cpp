@@ -14,6 +14,7 @@ struct MyConfig {
         //      expected_failures(2);
         //      timeout(1);
         //      tolerance(0.0001);
+      // zariowana noc V2
     }
 
     ~MyConfig() {
