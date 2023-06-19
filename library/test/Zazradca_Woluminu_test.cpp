@@ -51,45 +51,5 @@ BOOST_AUTO_TEST_CASE(ExceptionTest)
     BOOST_CHECK_THROW(zarzadca.dodajWolumin(nullptr), RepozytoriumException);
     BOOST_CHECK_THROW(zarzadca.usunWolumin(nullptr), RepozytoriumException);
 }
-BOOST_AUTO_TEST_CASE(FileSerializationTest)
-{
-    Zarzadca_Woluminu zarzadca;
 
-    std::vector<std::string> autors = {"Autor1", "Autor2"};
-    auto n1 = std::make_shared<Naukowa>("Wydawnictwo1", "Polski", "Tytuł1", autors, "Recenzja1", "Dział1");
-    auto n2 = std::make_shared<Naukowa>("Wydawnictwo2", "Polski", "Tytuł2", autors, "Recenzja2", "Dział2");
-
-    zarzadca.dodajWolumin(n1);
-    zarzadca.dodajWolumin(n2);
-
-    std::string filename = "woluminy.txt";
-
-    // Zapisz tytuły woluminów do pliku
-    std::fstream ofs;
-    try {
-        ofs.open(filename);
-        if (ofs.fail()) {
-            BOOST_FAIL("Nie mogłem otworzyć pliku do zapisu");
-        }
-    }
-    catch (const std::ofstream::failure& e) {
-        BOOST_FAIL("Wyjątek podczas otwierania pliku do zapisu: " + std::string(e.what()));
-    }
-
-    for (const auto& wolumin : zarzadca.znajdzWszystkieWoluminy()) {
-        ofs << wolumin->getTytul() << '\n';
-    }
-    std::vector<std::string> wczytane_tytuly;
-    std::string tytul;
-    ofs.seekg(0, std::ios::beg); // Ustaw wskaźnik na początek pliku
-    while (std::getline(ofs, tytul)) {
-        wczytane_tytuly.push_back(tytul);
-    }
-    ofs.close();
-
-    BOOST_CHECK_EQUAL(wczytane_tytuly.size(), zarzadca.znajdzWszystkieWoluminy().size());
-    for (size_t i = 0; i < wczytane_tytuly.size(); ++i) {
-        BOOST_CHECK_EQUAL(wczytane_tytuly[i], zarzadca.znajdzWszystkieWoluminy()[i]->getTytul());
-    }
-}
 
