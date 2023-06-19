@@ -1,17 +1,19 @@
 #include <iostream>
-#include "Wypozycajacy.h"
-#include "Uczen.h"
-#include "Nauczyciel.h"
-#include "Pozostali.h"
+#include "Wypozyczenie.h"
+#include "Czasopismo.h"
 #include <sstream>
 
 using namespace std;
 
 int main() {
-    cout << "Hello, World!" << endl;
-    /*PTime testDate = boost::posix_time::time_from_string("2023-05-30 00:00:00");
-    Typ_Wypozycajacy_Ptr uczen = std::make_shared<Uczen>(0.0, 30, 10, "2");
-    Wypozycajacy w3(uczen, "Jan Kowalski", testDate, "Kraków");
-    cout<<w3.getUuid()<<endl;*/
+   // cout << "Hello, World!" << endl;
+    Wolumin_Ptr c2=make_shared<Czasopismo>("WydawnictwoTestowe", "Polski", "TytulTestowy", "NrTestowy");
+    Czasopismo c("WydawnictwoTestowe", "Polski", "TytulTestowy", "NrTestowy");
+
+    c2->zapisz_do_pliku();
+
+    string odczytane = c2->czytaj_z_pliku();
+        cout << "Odczytane: '" << odczytane << "'\n";
+        cout << "Oczekiwane: '" << c.pobierz_informacje() << "'\n";
     return 0;
 }

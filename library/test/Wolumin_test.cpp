@@ -111,4 +111,5 @@ BOOST_AUTO_TEST_SUITE(WoluminSuiteCorrect)
         BOOST_CHECK_THROW(b1.setRodzaj(""), WoluminException);
         BOOST_CHECK_THROW(b1.setAutor(emptyAutors), WoluminException);
     }
+
 BOOST_AUTO_TEST_SUITE_END()

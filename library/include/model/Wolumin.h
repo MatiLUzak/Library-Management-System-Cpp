@@ -32,18 +32,8 @@ public:
 
     virtual std::string pobierz_informacje()=0;
 
-    template<class Archive>
-    void save(Archive & archive) const
-    {
-        archive(tytul);
-    }
+    void zapisz_do_pliku();
 
-    template<class Archive>
-    void load(Archive & archive)
-    {
-        archive(tytul);
-    }
-
-    BOOST_SERIALIZATION_SPLIT_MEMBER()
+    std::string czytaj_z_pliku();
 };
 #endif //OOPPROJECT_WOLUMIN_H

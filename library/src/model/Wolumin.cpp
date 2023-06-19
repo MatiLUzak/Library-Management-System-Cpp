@@ -48,3 +48,23 @@ void Wolumin::setTytul(const std::string &tytul) {
     }
     Wolumin::tytul = tytul;
 }
+void Wolumin::zapisz_do_pliku()  {
+    std::string nazwaPliku = "default_file.txt"; // Wybierz domyślną nazwę pliku
+    std::ofstream plik;
+    plik.open(nazwaPliku, std::ios::app); // Otwórz plik do dopisywania
+    if(!plik) {
+        throw WoluminException("Nie mozna otworzyc pliku");
+    }
+    plik << pobierz_informacje() << std::endl;
+    plik.close();
+}
+std::string Wolumin::czytaj_z_pliku() {
+    std::string nazwaPliku = "default_file.txt"; // Wybierz domyślną nazwę pliku
+    std::ifstream plik(nazwaPliku);
+    if(!plik) {
+        throw WoluminException("Nie mozna otworzyc pliku");
+    }
+    std::stringstream strumien;
+    strumien << plik.rdbuf();
+    return strumien.str();
+}
